@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Crispy chicken, made for you">
+
+  <!-- Google Maps JavaScript API -->
+  <script id="google-maps-js-sdk" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDE3yms3SILDik8YWA7nPTYtIU8ioBxf3I&libraries=places,marker,geometry,visualization"></script>
+
+  <!-- iOS & PWA meta tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Chickiez">
+  <meta name="theme-color" content="#E53935">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Chickiez</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    :root {
+      --brand-primary: #E53935;
+      --brand-secondary: #242021;
+      --brand-bg: #242021;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--brand-bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .safri-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--brand-bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+      transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
+    }
+
+    .safri-loader.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .safri-loader-brand {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .safri-logo-wrapper {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    .safri-logo {
+      width: 88px;
+      height: 88px;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+
+    .safri-spinner {
+      width: 38px;
+      height: 38px;
+      border: 3.5px solid rgba(255, 255, 255, 0.15);
+      border-top-color: var(--brand-primary);
+      border-radius: 50%;
+      animation: spin 0.9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+      50% {
+        transform: scale(1.04);
+        box-shadow: 0 14px 38px rgba(0, 0, 0, 0.25);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="loading" class="safri-loader">
+    <div class="safri-loader-brand">
+      <div class="safri-logo-wrapper">
+        <img class="safri-logo" src="logo.webp" alt="Chickiez" onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="safri-spinner"></div>
+    </div>
+  </div>
+
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
